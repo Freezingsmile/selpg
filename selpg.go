@@ -9,6 +9,8 @@ import (
 	"os/exec"
 )
 
+var progname string
+
 type Selpg_args struct {
 	start_page int
 	end_page int
@@ -17,34 +19,10 @@ type Selpg_args struct {
 	page_type int
 	print_dest string
 }
-/* save name by which program is invoked, for error messages */
-var progname string
 
-func main() {
-	progname = os.Args[0]
-	var sa Selpg_args
-	flag.Usage = usage
-	flag.IntVar(&sa.start_page, "s", -1, "sp")
-	flag.IntVar(&sa.end_page, "e", -1, "ep")
-	flag.IntVar(&sa.page_len, "l", 72, "length/p")
-	flag.IntVar(&sa.page_type, "f", 0, "line/form-feed")
-	print_dest := flag.String("d", "", "print dest")
-	flag.Parse()
-	if *print_dest  != "" {
-		sa.print_dest = *print_dest
-	}
-	process_args(&sa)
-	process_input(&sa)
-}
-
-func usage() {
-	fmt.Println("The following is usage of selpg.")
-	fmt.Println("\tselpg -s=Number -e=Number [options] [filename]")
-	fmt.Println("\t\t-l ---------- Determine the number of lines per page and default is 72.")
-	fmt.Println("\t\t-f ---------- Determine the type and the way to be seprated.")
-	fmt.Println("\t\t-d ---------- Determine the destination of output.")
-	fmt.Println("\t\t[filename] ---------- Read input from this file.")
-	fmt.Println("\t\tIf filename is not given, it will read input from stdin. Ctrl+D to cutout.")
+func errorExit(reason string) {
+	fmt.Fprintln(os.Stderr, reason)
+	os.Exit(1)
 }
 
 func process_args(sa *Selpg_args) {
@@ -119,3 +97,21 @@ func process_input(sa *Selpg_args) {
 		cmd.Start()
 	}
 }
+
+func main() {
+	progname = os.Args[0]
+	var sa Selpg_args
+	flag.Usage = usage
+	flag.IntVar(&sa.start_page, "s", -1, "sp")
+	flag.IntVar(&sa.end_page, "e", -1, "ep")
+	flag.IntVar(&sa.page_len, "l", 72, "length/p")
+	flag.IntVar(&sa.page_type, "f", 0, "line/form-feed")
+	print_dest := flag.String("d", "", "print dest")
+	flag.Parse()
+	if *print_dest  != "" {
+		sa.print_dest = *print_dest
+	}
+	process_args(&sa)
+	process_input(&sa)
+}
+
