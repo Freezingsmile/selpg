@@ -47,6 +47,65 @@ selpg -s10 -e20 -dlp1
 lpstat -t | grep lp1 ，
 应该看见 lp1 队列中的作业。如果在运行 lpstat 命令前耽搁了一些时间，那么可能看不到该作业，因为它一旦被打印就从队列中消失了。
  
+
+
 测试 
  
 使用 txt文本进行测试:
+
+The day that you see me old and I am already not, have patience and try to understand me .
+If I get dirty when eating… if I cannot dress… have patience.
+Remember the hours I spent teaching it to you.
+If, when I speak to you, I repeat the same things  thousand and one times.
+Do not interrupt me. Listen to me.
+When you were small, I had to read to you thousand and one times the same story 
+until you get to sleep… When I do not want to have a shower, neither shame me nor 
+scold me. Remember when I had to chase you with thousand excuses I invented, 
+in order that you wanted 
+to bath…When you see my on new technologies… give me the necessary time and not look at me 
+with your mocking smile.
+I taught you how to do so many things… to eat well, to dress well… to confront life.
+When at some moment I lose the memory or the thread of our conversation… let me have the necessary time 
+to remember… and if I cannot do it；do not become nervous… as the most important thing is not 
+my conversation but surely to be with you and to have you listening to me.
+If ever I do not want to eat, do not force me. I know well when I need to and when not.
+When my tired legs do not allow me walk… give me your hand… the same way 
+I did when you gave your first steps. 
+And when someday I say to you that I do not want to live any more.
+that I want to die… do not get angry… some day you will understand.
+Try to understand that my age is not lived but survived. 
+Some day you will discover that, despite my mistakes, I always wanted 
+the best thing for you and that I tried to prepare the way for you. 
+You must not feel sad, angry or impotent for seeing me near you. 
+You must be next to me, 
+try to understand me and to help me as I did it when you started living. 
+Help me to walk.
+Help me to end my way with love and patience. 
+I will pay you by a smile and by the immense love I have had always for you. 
+I love you son.
+
+    Test cat test | selpg -s 2 -e 3 -l 5
+result : 
+
+with your mocking smile.
+I taught you how to do so many things… to eat well, to dress well… to confront life.
+When at some moment I lose the memory or the thread of our conversation… let me have the necessary time 
+to remember… and if I cannot do it；do not become nervous… as the most important thing is not 
+my conversation but surely to be with you and to have you listening to me.
+If ever I do not want to eat, do not force me. I know well when I need to and when not.
+When my tired legs do not allow me walk… give me your hand… the same way 
+I did when you gave your first steps. 
+And when someday I say to you that I do not want to live any more.
+that I want to die… do not get angry… some day you will understand.
+
+    Test selpg -s 1 -e 1 -l 20 test
+result:
+
+the best thing for you and that I tried to prepare the way for you. 
+You must not feel sad, angry or impotent for seeing me near you. 
+You must be next to me, 
+try to understand me and to help me as I did it when you started living. 
+Help me to walk.
+Help me to end my way with love and patience. 
+I will pay you by a smile and by the immense love I have had always for you. 
+I love you son.
