@@ -109,3 +109,48 @@ Help me to walk.
 Help me to end my way with love and patience. 
 I will pay you by a smile and by the immense love I have had always for you. 
 I love you son.
+
+    Test selpg -s=1 -e=1 -l 6 < test
+result:
+
+until you get to sleep… When I do not want to have a shower, neither shame me nor 
+scold me. Remember when I had to chase you with thousand excuses I invented, 
+in order that you wanted 
+to bath…When you see my on new technologies… give me the necessary time and not look at me 
+with your mocking smile.
+I taught you how to do so many things… to eat well, to dress well… to confront life.
+When at some moment I lose the memory or the thread of our conversation… let me have the necessary time 
+to remember… and if I cannot do it；do not become nervous… as the most important thing is not 
+my conversation but surely to be with you and to have you listening to me.
+If ever I do not want to eat, do not force me. I know well when I need to and when not.
+When my tired legs do not allow me walk… give me your hand… the same way 
+I did when you gave your first steps. 
+
+    Test selpg -s 2 -e 2 -l 5 test >output
+result:
+
+with your mocking smile.
+I taught you how to do so many things… to eat well, to dress well… to confront life.
+When at some moment I lose the memory or the thread of our conversation… let me have the necessary time 
+to remember… and if I cannot do it；do not become nervous… as the most important thing is not 
+my conversation but surely to be with you and to have you listening to me.
+
+    Test ./selpg -s 1 -e 2 -l 2 cat -n printer test
+result:
+
+Remember the hours I spent teaching it to you.
+If, when I speak to you, I repeat the same things  thousand and one times.
+Do not interrupt me. Listen to me.
+When you were small, I had to read to you thousand and one times the same story 
+（ 这里本意是测试-d命令，不过因为没有设备，所以只能用cat -n)
+
+    Test ./selpg -s 1 -e 2 -l 2 test | go run scanner.go
+使用 scanner.go 文件中的函数（文件可在附件中找到）
+result:
+Scanner: Remember the hours I spent teaching it to you.
+Scanner:If, when I speak to you, I repeat the same things  thousand and one times.
+Scanner:Do not interrupt me. Listen to me.
+Scanner:When you were small, I had to read to you thousand and one times the same story 
+
+ 
+以上测试结果均没有出现错误.
